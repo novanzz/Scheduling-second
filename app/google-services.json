@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "612736974720",
+    "firebase_url": "https://schedulling-c0f93.firebaseio.com",
+    "project_id": "schedulling-c0f93",
+    "storage_bucket": "schedulling-c0f93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612736974720:android:7e4ac0761cc0f337",
+        "android_client_info": {
+          "package_name": "com.example.asus.scheduling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "612736974720-7eck0v2gqqj3ojdqb7lkaqptsjb14e59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.asus.scheduling",
+            "certificate_hash": "4c2afd368e12a472057b924056543bc322ff3b19"
+          }
+        },
+        {
+          "client_id": "612736974720-c25cnfja3goa5o8h2277diah6bdea871.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWu-3zf5ta-QEcg6Iq0qC3z4Y_hPDrmRM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "612736974720-c25cnfja3goa5o8h2277diah6bdea871.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
