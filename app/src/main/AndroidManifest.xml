@@ -25,7 +25,8 @@
         </activity>
         <activity android:name=".activity.SgnNotRegst" />
         <activity android:name=".activity.MakeGroup" />
-        <activity android:name=".activity.JoinGroup"></activity>
+        <activity android:name=".adapter.JoinGrupAdapter" />
+        <activity android:name=".activity.JoinGroupActivity"></activity>
     </application>
 
 </manifest>

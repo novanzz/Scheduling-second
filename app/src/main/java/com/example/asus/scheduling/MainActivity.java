@@ -5,7 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.asus.scheduling.adapter.CategoryAdapter;
+import com.example.asus.scheduling.adapter.FragmentAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         // untuk membuat viewpager pakai adapter
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        CategoryAdapter adapter = new CategoryAdapter(this, getSupportFragmentManager());
+        FragmentAdapter adapter = new FragmentAdapter(this, getSupportFragmentManager());
 
         viewPager.setAdapter(adapter);
 

@@ -8,9 +8,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.asus.scheduling.fragment.AccountActivity;
 import com.example.asus.scheduling.fragment.BlankFragment;
 
-public class CategoryAdapter extends FragmentPagerAdapter {
+public class FragmentAdapter extends FragmentPagerAdapter {
 
-    public CategoryAdapter(Context context, FragmentManager fm) {
+    public FragmentAdapter(Context context, FragmentManager fm) {
         // Required empty public constructor
         super(fm);
     }

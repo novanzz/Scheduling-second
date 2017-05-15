@@ -48,7 +48,7 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
     private void MkGroup(){
         final FirebaseUser user = mAuth.getCurrentUser();
         User users = new User(user.getDisplayName(),user.getEmail());
-        userRef.child("Group").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+        userRef.child("User").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 startActivity(new Intent(SgnNotRegst.this,MakeGroup.class));
@@ -60,10 +60,11 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
     private void JnGroup(){
         final  FirebaseUser user = mAuth.getCurrentUser();
         User users = new User(user.getDisplayName(),user.getEmail());
-        userRef.child("Group").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+        userRef.child("User").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                startActivity(new Intent(SgnNotRegst.this,JoinGroup.class));
+                startActivity(new Intent(SgnNotRegst.this,JoinGroupActivity.class));
+                finish();
             }
         });
     }
