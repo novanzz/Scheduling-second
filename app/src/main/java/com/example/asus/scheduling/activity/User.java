@@ -9,17 +9,36 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class User {
 
-    public String name;
-    public String email,key;
+    public String name,email,photoUrl;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
     public User() {
     }
 
-    public User(String name, String email) {
+    public User(String photoUrl,String name, String email) {
+        this.photoUrl = photoUrl;
         this.name = name;
         this.email = email;
-        this.key = key;
+
+    }
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public String getName() {return name;}
+
+    public String getEmail() {return email;}
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

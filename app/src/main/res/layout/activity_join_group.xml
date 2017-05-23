@@ -8,10 +8,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.asus.scheduling.activity.JoinGroup">
+    tools:context="com.example.asus.scheduling.activity.JoinGrupActivity">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/fotouser"
         android:layout_width="88dp"
         android:layout_height="88dp" />
 
@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/image"
+        android:layout_toRightOf="@id/fotouser"
         android:orientation="vertical"
         android:paddingLeft="16dp">
 

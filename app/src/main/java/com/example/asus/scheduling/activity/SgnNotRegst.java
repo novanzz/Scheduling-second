@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.asus.scheduling.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,9 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
     private FirebaseDatabase mFirebaseInstance;
     private FirebaseAuth mAuth;
 
+    private ImageView mFotoUser;
+    // buat photo
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,9 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference();
         userRef = mFirebaseDatabase;
+
+
+
     }
     private void out(){
 
@@ -47,24 +54,24 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
     }
     private void MkGroup(){
         final FirebaseUser user = mAuth.getCurrentUser();
-        User users = new User(user.getDisplayName(),user.getEmail());
+        User users = new User(user.getPhotoUrl().toString(),user.getDisplayName(),user.getEmail());
         userRef.child("User").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 startActivity(new Intent(SgnNotRegst.this,MakeGroup.class));
-                finish();
+
             }
         });
     }
 
     private void JnGroup(){
         final  FirebaseUser user = mAuth.getCurrentUser();
-        User users = new User(user.getDisplayName(),user.getEmail());
+        User users = new User(user.getPhotoUrl().toString(),user.getDisplayName(),user.getEmail());
         userRef.child("User").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                startActivity(new Intent(SgnNotRegst.this,JoinGroupActivity.class));
-                finish();
+                startActivity(new Intent(SgnNotRegst.this,JoinGrupActivity.class));
+
             }
         });
     }

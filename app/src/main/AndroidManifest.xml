@@ -24,9 +24,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.SgnNotRegst" />
-        <activity android:name=".activity.MakeGroup" />
-        <activity android:name=".adapter.JoinGrupAdapter" />
-        <activity android:name=".activity.JoinGroupActivity"></activity>
+        <activity
+            android:name=".activity.MakeGroup"
+            android:label="Make Group"
+            android:parentActivityName=".activity.SgnNotRegst">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.SgnNotRegst" />
+        </activity>
+        <activity android:name=".activity.JoinGrupActivity"></activity>
     </application>
 
 </manifest>
