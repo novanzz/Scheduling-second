@@ -1,4 +1,4 @@
-package com.example.asus.scheduling.activity;
+package com.example.asus.scheduling.Model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -9,19 +9,34 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class User {
 
-    public String name,email,photoUrl;
+    private String name;
+    private String email;
+    private String photoUrl;
+
+    public String getGroupID() {
+        return GroupID;
+    }
+
+    public void setGroupID(String groupID) {
+        GroupID = groupID;
+    }
+
+    private String GroupID;
 
     // Default constructor required for calls to
     // DataSnapshot.getValue(User.class)
     public User() {
     }
 
-    public User(String photoUrl,String name, String email) {
+    public User(String photoUrl,String name, String email,String groupID) {
         this.photoUrl = photoUrl;
         this.name = name;
         this.email = email;
+        this.GroupID = groupID;
 
     }
+
+
     public String getPhotoUrl() {
         return photoUrl;
     }

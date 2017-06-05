@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_join_group"
+    android:id="@+id/fragmentFriend"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="88dp"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,37 +11,36 @@
     tools:context="com.example.asus.scheduling.activity.JoinGrupActivity">
 
     <ImageView
-        android:id="@+id/fotogroup"
+        android:id="@+id/fotouser"
         android:layout_width="88dp"
         android:layout_height="88dp" />
 
     <LinearLayout
         android:id="@+id/text_container"
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="88dp"
-        android:layout_toRightOf="@id/fotogroup"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/fotouser"
         android:orientation="vertical"
         android:paddingLeft="16dp">
 
         <TextView
             android:text="solatulllah"
             android:id="@+id/txtNama"
-            android:layout_width="177dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center" />
+            android:gravity="bottom" />
 
+        <TextView
+            android:text="salaamulllah"
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top" />
     </LinearLayout>
-
-    <Button
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:text="Join"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/text_container"
-        android:layout_marginStart="24dp"
-        android:onClick="Join"
-        android:id="@+id/button2" />
-
 
 </RelativeLayout>

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.asus.scheduling.fragment.AccountActivity;
 import com.example.asus.scheduling.fragment.BlankFragment;
+import com.example.asus.scheduling.fragment.ListFriend;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
 
@@ -18,7 +19,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
 
-        return 2;
+        return 3;
     }
 
 
@@ -26,17 +27,23 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new BlankFragment();
-        }else{
-            return new AccountActivity();
         }
+        if (position == 1) {
+            return new AccountActivity();
+        }else{
+            return new ListFriend();
+        }
+
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
             return "Blank";
-        } else {
-            return "Blank3";
+        } if(position ==1) {
+            return "Coba";
+        }else {
+            return "Friend";
         }
     }
 }

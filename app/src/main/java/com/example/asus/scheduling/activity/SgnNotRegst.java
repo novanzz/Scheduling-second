@@ -2,17 +2,12 @@ package com.example.asus.scheduling.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.example.asus.scheduling.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,8 +20,7 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
     private FirebaseDatabase mFirebaseInstance;
     private FirebaseAuth mAuth;
 
-    private ImageView mFotoUser;
-    // buat photo
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,28 +47,14 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
         finish();
     }
     private void MkGroup(){
-        final FirebaseUser user = mAuth.getCurrentUser();
-        User users = new User(user.getPhotoUrl().toString(),user.getDisplayName(),user.getEmail());
-        userRef.child("User").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                startActivity(new Intent(SgnNotRegst.this,MakeGroup.class));
-
-            }
-        });
+        startActivity(new Intent(SgnNotRegst.this,MakeGroup.class));
     }
 
     private void JnGroup(){
-        final  FirebaseUser user = mAuth.getCurrentUser();
-        User users = new User(user.getPhotoUrl().toString(),user.getDisplayName(),user.getEmail());
-        userRef.child("User").child(user.getUid()).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                startActivity(new Intent(SgnNotRegst.this,JoinGrupActivity.class));
 
-            }
-        });
+                startActivity(new Intent(SgnNotRegst.this,JoinGrupActivity.class));
     }
+
 
     @Override
     public void onClick(View v) {

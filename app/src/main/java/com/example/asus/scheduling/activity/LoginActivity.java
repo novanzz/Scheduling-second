@@ -141,11 +141,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             //disini dia minta user yang sedang login saat itu
                             final FirebaseUser user = mAuth.getCurrentUser();
                             //trus dengan node childe Group lalu sekali narik data
-                            mFirebaseDatabase.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
+                            mFirebaseDatabase.child("User").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 //method data berubah
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    if(dataSnapshot.hasChild(user.getUid())){
+                                    if(dataSnapshot.getValue()!= null){
                                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                         finish();
                                     }else{
