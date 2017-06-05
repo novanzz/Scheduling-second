@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class JoinGrupActivity extends AppCompatActivity {
 
     private RecyclerView JoinGroupRecyclerview;
@@ -77,7 +80,10 @@ public class JoinGrupActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         User newU = new User(user.getPhotoUrl().toString(),user.getDisplayName(),user.getEmail(),postKey);
-                        mDatabaseRef.child("User").child(user.getUid()).setValue(newU, new DatabaseReference.CompletionListener() {
+                        Map<String,Object> update = new HashMap<>();
+                        update.put("/User/"+user.getUid(),newU);
+                        update.put("/GroupUser/"+postKey+"/"+user.getUid(),true);
+                        mDatabaseRef.updateChildren(update, new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                 Intent i = new Intent(JoinGrupActivity.this, MainActivity.class);
