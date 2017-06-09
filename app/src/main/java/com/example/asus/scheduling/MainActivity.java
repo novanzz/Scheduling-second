@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 
-import com.example.asus.scheduling.activity.JoinGrupActivity;
 import com.example.asus.scheduling.activity.LoginActivity;
 import com.example.asus.scheduling.adapter.FragmentAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends JoinGrupActivity {
+public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
@@ -21,19 +21,7 @@ public class MainActivity extends JoinGrupActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //uji coba putExtra
-        // intent = getIntent();
-        //String value = intent.getStringExtra("postKey");
-
-        //Bundle bundle = new Bundle();
-        //bundle.putString("postKey", value);
-        //intent.putExtras(bundle);
-
-        //Bundle bundle = new Bundle();
-        //bundle.putString("postKey",value);
-        //ListFriend myFrag = new ListFriend();
-        //myFrag.setArguments(bundle);
-
+        // cek user sudah login sebelumnya atau belum
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user == null) {
@@ -41,6 +29,7 @@ public class MainActivity extends JoinGrupActivity {
             startActivity(i);
             //MainActivity.this.finish();
         }
+
             // untuk membuat viewpager pakai adapter
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);

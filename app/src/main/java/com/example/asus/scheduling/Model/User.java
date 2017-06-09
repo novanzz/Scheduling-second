@@ -12,15 +12,6 @@ public class User {
     private String name;
     private String email;
     private String photoUrl;
-
-    public String getGroupID() {
-        return GroupID;
-    }
-
-    public void setGroupID(String groupID) {
-        GroupID = groupID;
-    }
-
     private String GroupID;
 
     // Default constructor required for calls to
@@ -56,4 +47,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getGroupID() {
+        return GroupID;
+    }
+
+    public void setGroupID(String groupID) {
+        GroupID = groupID;
+    }
+
+
 }

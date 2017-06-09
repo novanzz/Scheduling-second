@@ -39,9 +39,9 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
-            return "Blank";
+            return "Calendar";
         } if(position ==1) {
-            return "Coba";
+            return "Profil";
         }else {
             return "Friend";
         }

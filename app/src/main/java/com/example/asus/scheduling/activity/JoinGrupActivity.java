@@ -36,8 +36,9 @@ public class JoinGrupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview_activity);
+        setContentView(R.layout.fragment_list_friend);
 
+        //deklarasi pembuatan firebase recycler
         JoinGroupRecyclerview = (RecyclerView) findViewById(R.id.user_list);
         JoinGroupRecyclerview.setHasFixedSize(true);
         LinearLayoutManager lin = new LinearLayoutManager(this);
@@ -58,6 +59,7 @@ public class JoinGrupActivity extends AppCompatActivity {
     }
 
     private void setupAdapter() {
+        //adapter untuk menampilkan data yang berada di child group
         adapter = new FirebaseRecyclerAdapter<Group, groupViewHolder>(
                 Group.class,
                 R.layout.activity_join_group,
@@ -67,9 +69,11 @@ public class JoinGrupActivity extends AppCompatActivity {
 
             @Override
             protected void populateViewHolder(groupViewHolder viewHolder, Group model, int position) {
+                //untuk mengindikasikan bahwa yang akan muncul itu ada txtname dan foto menggunakan glide
                 viewHolder.txtName.setText(model.getName());
                 Glide.with(JoinGrupActivity.this).load(model.getUrl()).into(viewHolder.photoUrl);
 
+                //mendapatkan key pada posisi sekarang
                 final DatabaseReference postRef = getRef(position);
                 // Set click listener for the whole post view
                 final String postKey = postRef.getKey();
@@ -80,9 +84,11 @@ public class JoinGrupActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         User newU = new User(user.getPhotoUrl().toString(),user.getDisplayName(),user.getEmail(),postKey);
+                        //Digunakan untuk push data ke dalam 2 node
                         Map<String,Object> update = new HashMap<>();
                         update.put("/User/"+user.getUid(),newU);
                         update.put("/GroupUser/"+postKey+"/"+user.getUid(),true);
+                        // update data yang ada bila telah selesai akan pindah act
                         mDatabaseRef.updateChildren(update, new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {

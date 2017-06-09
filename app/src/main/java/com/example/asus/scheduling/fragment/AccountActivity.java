@@ -57,6 +57,7 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
         TextView mTextUser = (TextView) rootView.findViewById(R.id.textEmail);
         TextView mTextUsername = (TextView) rootView.findViewById(R.id.textUserName);
 
+
         // cek user ada apa engga di firebase supaya  klo dah login lu ga ush balik lagi ke login
         mAuth = FirebaseAuth.getInstance();
         mBtnLogout = (Button) rootView.findViewById(R.id.btnLogout);

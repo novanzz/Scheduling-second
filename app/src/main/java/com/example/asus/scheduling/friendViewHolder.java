@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 // viewholder untuk Join Grup
 public class friendViewHolder extends RecyclerView.ViewHolder{
 
@@ -16,7 +18,7 @@ public class friendViewHolder extends RecyclerView.ViewHolder{
         super(itemView);
         txtEmail = (TextView)itemView.findViewById(R.id.txtEmail);
         txtName = (TextView)itemView.findViewById(R.id.txtNama);
-        photoUrl = (ImageView)itemView.findViewById(R.id.fotouser);
+        photoUrl = (CircleImageView)itemView.findViewById(R.id.fotouser);
     }
 }
 

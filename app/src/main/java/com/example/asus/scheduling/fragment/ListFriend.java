@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ListFriend extends Fragment {
     private RecyclerView JoinGroupRecyclerview;
     private DatabaseReference mDatabaseRef,keyRef,dataRef;
@@ -46,7 +48,7 @@ public class ListFriend extends Fragment {
         //Intent intent = getActivity().getIntent();
         //key = intent.getStringExtra("postKey");
 
-        View rootView = inflater.inflate(R.layout.listview_activity, container, false);
+        View rootView = inflater.inflate(R.layout.listview_friend_fragment, container, false);
 
 
         JoinGroupRecyclerview = (RecyclerView) rootView.findViewById(R.id.user_list);
@@ -57,7 +59,7 @@ public class ListFriend extends Fragment {
             mDatabaseRef = FirebaseDatabase.getInstance().getReference();
 
         final TextView mTxtNamaGrup = (TextView) rootView.findViewById(R.id.txtNamaGrup);
-        final ImageView mPhotoGrup = (ImageView) rootView.findViewById(R.id.fotogroup);
+        final ImageView mPhotoGrup = (CircleImageView) rootView.findViewById(R.id.fotogroup);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();

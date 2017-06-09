@@ -6,6 +6,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class groupViewHolder extends RecyclerView.ViewHolder{
 
@@ -16,7 +18,7 @@ public class groupViewHolder extends RecyclerView.ViewHolder{
     public groupViewHolder(View itemView) {
         super(itemView);
         txtName = (TextView)itemView.findViewById(R.id.txtNama);
-        photoUrl = (ImageView)itemView.findViewById(R.id.fotogroup);
+        photoUrl = (CircleImageView)itemView.findViewById(R.id.fotogroup);
         btnClick = (Button) itemView.findViewById(R.id.button2);
 
     }
