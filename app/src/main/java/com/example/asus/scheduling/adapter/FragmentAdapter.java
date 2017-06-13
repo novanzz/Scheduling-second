@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.asus.scheduling.fragment.AccountActivity;
-import com.example.asus.scheduling.fragment.BlankFragment;
+import com.example.asus.scheduling.fragment.Calendar;
 import com.example.asus.scheduling.fragment.ListFriend;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
@@ -26,7 +26,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return new BlankFragment();
+            return new Calendar();
         }
         if (position == 1) {
             return new AccountActivity();

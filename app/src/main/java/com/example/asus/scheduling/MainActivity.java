@@ -1,19 +1,18 @@
 package com.example.asus.scheduling;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.asus.scheduling.activity.LoginActivity;
 import com.example.asus.scheduling.adapter.FragmentAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private DatabaseReference userRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // cek user sudah login sebelumnya atau belum
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        if (user == null) {
-            Intent i = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(i);
-            //MainActivity.this.finish();
-        }
 
             // untuk membuat viewpager pakai adapter
 

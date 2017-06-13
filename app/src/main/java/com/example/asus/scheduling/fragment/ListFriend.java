@@ -48,7 +48,7 @@ public class ListFriend extends Fragment {
         //Intent intent = getActivity().getIntent();
         //key = intent.getStringExtra("postKey");
 
-        View rootView = inflater.inflate(R.layout.listview_friend_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_list_friend, container, false);
 
 
         JoinGroupRecyclerview = (RecyclerView) rootView.findViewById(R.id.user_list);

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.asus.scheduling.R;
 import com.example.asus.scheduling.activity.AddEvent;
 
-public class BlankFragment extends Fragment {
+public class Calendar extends Fragment {
 
     private FloatingActionButton fab;
 
@@ -19,7 +19,7 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_blank, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_calendar, container, false);
         fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {

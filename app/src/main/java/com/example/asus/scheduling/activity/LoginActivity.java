@@ -1,5 +1,6 @@
 package com.example.asus.scheduling.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -45,6 +46,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     // Write a message to the database
     private DatabaseReference mFirebaseDatabase, userRef;
     private FirebaseDatabase mFirebaseInstance ;
+
+    private ProgressDialog progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

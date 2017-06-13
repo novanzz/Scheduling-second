@@ -90,6 +90,8 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
                 startActivity(a);
                 getActivity().finish();
                 break;
+            case R.id.btnLeftGrp:
+                break;
         }
     }
 

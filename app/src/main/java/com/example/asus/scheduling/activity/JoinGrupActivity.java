@@ -36,7 +36,7 @@ public class JoinGrupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_list_friend);
+        setContentView(R.layout.fragment_list_group);
 
         //deklarasi pembuatan firebase recycler
         JoinGroupRecyclerview = (RecyclerView) findViewById(R.id.user_list);

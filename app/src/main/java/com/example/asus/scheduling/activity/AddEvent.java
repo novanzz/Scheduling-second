@@ -1,7 +1,6 @@
 package com.example.asus.scheduling.activity;
 
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +8,8 @@ import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import com.example.asus.scheduling.MainActivity;
 import com.example.asus.scheduling.R;
 
 import java.util.Calendar;
@@ -34,8 +33,8 @@ public class AddEvent extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
                                    @Override
                                    public void onClick(View v) {
-                                       Intent i = new Intent(AddEvent.this, MainActivity.class);
-                                       startActivity(i);
+                                     // event yang terjadi ketika di klik
+                                       Toast.makeText(AddEvent.this,"Success",Toast.LENGTH_SHORT).show();
                                    }
                                });
 
