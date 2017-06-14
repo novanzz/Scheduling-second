@@ -7,9 +7,11 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.asus.scheduling.MainActivity;
+import com.example.asus.scheduling.MainActivityAbout;
 import com.example.asus.scheduling.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -49,10 +51,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private ProgressDialog progress;
 
+    private Button btnAbout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //inisialisasi button untuk pengenalan aplikasi
+        btnAbout = (Button) findViewById(R.id.About);
+        btnAbout.setOnClickListener(myhandler1);
 
         //inisialisasi mendapatkan auth dari firebase
         mAuth = FirebaseAuth.getInstance();
@@ -88,6 +96,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 // samapai sini
 
         }
+
+    View.OnClickListener myhandler1 = new View.OnClickListener() {
+        public void onClick(View v) {
+            startActivity(new Intent(LoginActivity.this,MainActivityAbout.class));
+        }
+    };
 
     public String getUid(){
         return FirebaseAuth.getInstance().getCurrentUser().getUid();

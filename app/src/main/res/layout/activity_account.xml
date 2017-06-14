@@ -44,11 +44,11 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnLogout" />
 
-        <Button
-            android:text="Leave Group"
-            android:layout_width="200dp"
-            android:layout_marginTop="30dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnLeftGrp" />
+      <Button
+          android:layout_width="200dp"
+          android:layout_marginTop="30dp"
+          android:layout_height="wrap_content"
+          android:text="Left Group"
+          android:id="@+id/btnOutGroup"/>
 </LinearLayout>
 </RelativeLayout>

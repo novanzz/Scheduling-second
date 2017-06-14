@@ -94,6 +94,7 @@ public class JoinGrupActivity extends AppCompatActivity {
                             public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
                                 Intent i = new Intent(JoinGrupActivity.this, MainActivity.class);
                                 startActivity(i);
+                                finish();
                             }
                         });
                     }

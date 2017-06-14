@@ -24,11 +24,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/sign_out_button"
+            android:id="@+id/About"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="Sign Out"/>
+            android:layout_height="match_parent"
+
+            android:text="About Apps"/>
     </LinearLayout>
 
 </RelativeLayout>

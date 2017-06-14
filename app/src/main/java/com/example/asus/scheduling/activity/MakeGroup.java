@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.asus.scheduling.MainActivity;
 import com.example.asus.scheduling.Model.Group;
 import com.example.asus.scheduling.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -49,6 +50,8 @@ public class MakeGroup extends AppCompatActivity implements View.OnClickListener
     //firebase objects
     private StorageReference storageReference;
     private DatabaseReference mDatabase;
+
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +87,7 @@ public class MakeGroup extends AppCompatActivity implements View.OnClickListener
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
 
             } catch (IOException e) {
@@ -110,7 +113,9 @@ public class MakeGroup extends AppCompatActivity implements View.OnClickListener
             mNamaGroup.setError("Nama Tidak Boleh Kosong");
             Toast.makeText(this, "Tidak dapat input data, masih ada field kosong", Toast.LENGTH_SHORT).show();
         }
-            setEnable(true);
+        if (bitmap == null) {
+            Toast.makeText(getApplicationContext(), "Masukan gambar", Toast.LENGTH_SHORT).show();
+        }
             //checking if file is available
             if (filePath != null) {
                 //displaying progress dialog while image is uploading
@@ -138,6 +143,8 @@ public class MakeGroup extends AppCompatActivity implements View.OnClickListener
                                 //adding an upload to firebase database
                                 String uploadId = mDatabase.push().getKey();
                                 mDatabase.child(uploadId).setValue(group);
+                                startActivity(new Intent (MakeGroup.this, MainActivity.class));
+                                finish();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

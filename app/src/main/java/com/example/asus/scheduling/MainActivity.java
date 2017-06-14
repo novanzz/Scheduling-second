@@ -6,13 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.asus.scheduling.adapter.FragmentAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private DatabaseReference userRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
