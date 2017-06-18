@@ -5,8 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.asus.scheduling.fragment.AccountActivity;
+import com.example.asus.scheduling.fragment.Account;
 import com.example.asus.scheduling.fragment.Calendar;
+import com.example.asus.scheduling.fragment.Daily;
 import com.example.asus.scheduling.fragment.ListFriend;
 
 public class FragmentAdapter extends FragmentPagerAdapter {
@@ -19,7 +20,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
 
-        return 3;
+        return 4;
     }
 
 
@@ -29,9 +30,13 @@ public class FragmentAdapter extends FragmentPagerAdapter {
             return new Calendar();
         }
         if (position == 1) {
-            return new AccountActivity();
-        }else{
+            return new Account();
+        }
+        if (position == 2) {
             return new ListFriend();
+        }
+        else{
+            return new Daily();
         }
 
     }
@@ -40,10 +45,15 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
             return "Calendar";
-        } if(position ==1) {
-            return "Profil";
-        }else {
-            return "Friend";
         }
+        if (position == 1) {
+            return "Profil";
+        }
+        if(position ==2) {
+            return "Friend";
+        }else {
+            return "Daily";
+        }
+
     }
 }

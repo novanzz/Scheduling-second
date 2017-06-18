@@ -2,7 +2,6 @@ package com.example.asus.scheduling.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.asus.scheduling.R;
 import com.example.asus.scheduling.activity.LoginActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class AccountActivity extends Fragment implements View.OnClickListener {
+public class Account extends Fragment implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
     private Button mBtnLogout,mbtnOutGroup;
@@ -55,14 +52,15 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
                 .build();
 
         mGoogleApiClient = new GoogleApiClient.Builder(getActivity().getApplicationContext())
-                .enableAutoManage(getActivity(), new GoogleApiClient.OnConnectionFailedListener() {
+                /**.enableAutoManage(getActivity(), new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
                     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
                         Toast.makeText(getContext(), "Error Cuy", Toast.LENGTH_LONG).show();
                     }
-                })
+                })**/
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
 
         //isi dari button sama text bentuk emaill
         TextView mTextUser = (TextView) rootView.findViewById(R.id.textEmail);
@@ -87,6 +85,8 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
 
         return rootView;
     }
+
+
  public void keluarGroup(){
 
      DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -114,12 +114,32 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
                                  public void onDataChange(DataSnapshot dataSnapshot) {
                                      for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                          appleSnapshot.getRef().removeValue();
+                                         // hapus tanggal pada node tanggalpribadi
+                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                                         Query queryUser = ref.child("TanggalPribadi").orderByChild("").equalTo(user.getUid());
+                                         queryUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                                             @Override
+                                             public void onDataChange(DataSnapshot dataSnapshot) {
+                                                 for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                                                     appleSnapshot.getRef().removeValue();
+
+                                                 }
+                                                 Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                                                 FirebaseAuth.getInstance().signOut();
+                                                 Intent b = new Intent(getContext(), LoginActivity.class);
+                                                 startActivity(b);
+                                                 getActivity().finish();
+                                             }
+
+                                             @Override
+                                             public void onCancelled(DatabaseError databaseError) {
+
+                                             }
+                                         });
+
                                      }
-                                     Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-                                     FirebaseAuth.getInstance().signOut();
-                                     Intent b = new Intent(getContext(), LoginActivity.class);
-                                     startActivity(b);
-                                     getActivity().finish();
+
                                  }
 
                                  @Override
@@ -161,7 +181,6 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
                 break;
         }
     }
-
 
 }
 

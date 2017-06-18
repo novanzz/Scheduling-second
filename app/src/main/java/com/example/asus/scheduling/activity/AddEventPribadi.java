@@ -1,6 +1,7 @@
 package com.example.asus.scheduling.activity;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.asus.scheduling.Model.IdTanggal;
+import com.example.asus.scheduling.MainActivity;
 import com.example.asus.scheduling.Model.Tanggal;
 import com.example.asus.scheduling.Model.User;
 import com.example.asus.scheduling.R;
@@ -72,19 +73,18 @@ public class AddEventPribadi extends AppCompatActivity {
                                                    Name = user1.getName();
                                                    // isi dari node tanggal
                                                    uploadId = mDatabase.push().getKey();
-                                                   Tanggal tglUser = new Tanggal(tanggal,jam,note,GroupId,PhotoUrl
-                                                           ,Name,uploadId);
-
-                                                   IdTanggal idTgl = new IdTanggal(uploadId);
+                                                   Tanggal tglUser = new Tanggal(tanggal,jam,note,PhotoUrl
+                                                           ,Name,uploadId,user.getUid());
 
                                                    Map<String,Object> update = new HashMap<>();
                                                    update.put("/TanggalPribadi/"+GroupId+"/"+uploadId,tglUser);
-                                                   update.put("/IdTanggal/"+user.getUid()+"/"+GroupId,idTgl);
 
                                                    // update data yang ada bila telah selesai akan pindah act
                                                    mDatabase.updateChildren(update, new DatabaseReference.CompletionListener() {
                                                        @Override
                                                        public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                                                           startActivity(new Intent(AddEventPribadi.this, MainActivity.class));
+                                                           finish();
                                                            Toast.makeText(AddEventPribadi.this,"Success",Toast.LENGTH_SHORT).show();
                                                        }
                                                    });

@@ -1,6 +1,7 @@
 package com.example.asus.scheduling.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -32,6 +33,7 @@ public class ListFriend extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseIndexRecyclerAdapter<User,friendViewHolder> adapter;
     String postKey;
+    private FloatingActionButton fab;
 
 
 
@@ -59,6 +61,10 @@ public class ListFriend extends Fragment {
 
         final TextView mTxtNamaGrup = (TextView) rootView.findViewById(R.id.txtNamaGrup);
         final ImageView mPhotoGrup = (CircleImageView) rootView.findViewById(R.id.fotogroup);
+
+
+
+
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();

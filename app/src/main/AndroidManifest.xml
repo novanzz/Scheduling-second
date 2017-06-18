@@ -37,7 +37,7 @@
         </activity>
         <activity android:name=".activity.JoinGrupActivity" />
         <activity android:name=".activity.AddEventPribadi" />
-        <activity android:name=".activity.AddEventGrup"></activity>
+        <activity android:name=".activity.AddEventGrup" />
     </application>
 
 </manifest>
