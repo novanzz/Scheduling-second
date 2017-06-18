@@ -14,8 +14,7 @@ import com.example.asus.scheduling.R;
 
 import java.util.Calendar;
 
-public class AddEvent extends AppCompatActivity {
-
+public class AddEventGrup extends AppCompatActivity {
     private CalendarView mCalenderView;
     private TextView mDisplayDate,txtTime;
     private Calendar dateTime = Calendar.getInstance();
@@ -24,19 +23,19 @@ public class AddEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_event);
+        setContentView(R.layout.activity_add_event_grup);
         mCalenderView = (CalendarView) findViewById(R.id.calenderview);
         mDisplayDate = (TextView) findViewById(R.id.date);
         txtTime = (TextView) findViewById(R.id.time);
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                     // event yang terjadi ketika di klik
-                                       Toast.makeText(AddEvent.this,"Success",Toast.LENGTH_SHORT).show();
-                                   }
-                               });
+            @Override
+            public void onClick(View v) {
+                // event yang terjadi ketika di klik
+                Toast.makeText(AddEventGrup.this,"Success",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         mCalenderView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -65,5 +64,4 @@ public class AddEvent extends AppCompatActivity {
         }
     };
 
-    }
-
+}

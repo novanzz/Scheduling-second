@@ -32,8 +32,7 @@ public class ListFriend extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseIndexRecyclerAdapter<User,friendViewHolder> adapter;
     String postKey;
-    String photoUrl;
-    String namaGrup;
+
 
 
 
@@ -107,7 +106,12 @@ public class ListFriend extends Fragment {
         }
 
     private void setupAdapter(DatabaseReference key, DatabaseReference data) {
-            adapter = new FirebaseIndexRecyclerAdapter<User, friendViewHolder>(User.class,R.layout.fragment_friend,friendViewHolder.class,key,data) {
+            adapter = new FirebaseIndexRecyclerAdapter<User, friendViewHolder>(
+                    User.class,
+                    R.layout.fragment_friend,
+                    friendViewHolder.class,
+                    key,data
+            ) {
                 @Override
                 protected void populateViewHolder(friendViewHolder viewHolder, User model, int position) {
                     viewHolder.txtEmail.setText(model.getEmail());

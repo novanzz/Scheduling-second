@@ -31,7 +31,7 @@ import com.google.firebase.database.ValueEventListener;
 public class AccountActivity extends Fragment implements View.OnClickListener {
 
     private FirebaseAuth mAuth;
-    private Button mBtnLogout,btnOutGroup;
+    private Button mBtnLogout,mbtnOutGroup;
     private GoogleApiClient mGoogleApiClient;
     private ImageView mFotoUser;
 
@@ -42,9 +42,9 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
         View rootView = inflater.inflate(R.layout.activity_account, container, false);
 
         mBtnLogout = (Button) rootView.findViewById(R.id.btnLogout);
-        btnOutGroup = (Button) rootView.findViewById(R.id.btnOutGroup);
+        mbtnOutGroup = (Button) rootView.findViewById(R.id.btnOutGroup);
         mBtnLogout.setOnClickListener(this);
-        btnOutGroup.setOnClickListener(this);
+        mbtnOutGroup.setOnClickListener(this);
 
         mFotoUser = (ImageView) rootView.findViewById(R.id.fotouser);
 
@@ -89,16 +89,14 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
     }
  public void keluarGroup(){
 
-     //coba hapus node
-     DatabaseReference ref = FirebaseDatabase.getInstance().getReference("GroupUser");
+     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
      // Attach a listener to read the data at our posts reference
-     ref.addListenerForSingleValueEvent(new ValueEventListener() {
+     ref.child("GroupUser").addListenerForSingleValueEvent(new ValueEventListener() {
          @Override
          public void onDataChange(DataSnapshot dataSnapshot) {
-
              for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                  String postkey = postSnapshot.getKey();
-                 //hapus user pada group
+                 //hapus user pada groupuser
                  FirebaseUser userGroup = FirebaseAuth.getInstance().getCurrentUser();
                  DatabaseReference refrensi = FirebaseDatabase.getInstance().getReference();
                  Query GroupQuery = refrensi.child("GroupUser").child(postkey).orderByKey().equalTo(userGroup.getUid());
@@ -117,6 +115,11 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
                                      for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                          appleSnapshot.getRef().removeValue();
                                      }
+                                     Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                                     FirebaseAuth.getInstance().signOut();
+                                     Intent b = new Intent(getContext(), LoginActivity.class);
+                                     startActivity(b);
+                                     getActivity().finish();
                                  }
 
                                  @Override
@@ -154,11 +157,7 @@ public class AccountActivity extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnOutGroup:
                 keluarGroup();
-                Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-                FirebaseAuth.getInstance().signOut();
-                Intent b = new Intent(getContext(), LoginActivity.class);
-                startActivity(b);
-                getActivity().finish();
+
                 break;
         }
     }

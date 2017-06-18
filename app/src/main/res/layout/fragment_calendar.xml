@@ -1,44 +1,46 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_calendar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.asus.scheduling.fragment.Calendar">
+    android:layout_height="88dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <CalendarView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/calenderview">
-    </CalendarView>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/darker_gray"/>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotouser"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"/>
+
     <LinearLayout
+        android:id="@+id/text_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="88dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/fotouser"
+        android:orientation="vertical"
+        android:paddingLeft="16dp">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/jadwal_user"
+        <TextView
+            android:text="solatulllah"
+            android:id="@+id/txtNama"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom" />
 
+        <TextView
+            android:text="salaamulllah"
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top" />
     </LinearLayout>
 
-</LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="25dp"
-        android:src="@drawable/ic_add_black_24dp"/>
-
-</FrameLayout>
+</RelativeLayout>

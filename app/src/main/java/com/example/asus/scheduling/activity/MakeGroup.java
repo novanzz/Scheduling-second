@@ -91,7 +91,7 @@ public class MakeGroup extends AppCompatActivity implements View.OnClickListener
                 imageView.setImageBitmap(bitmap);
 
             } catch (IOException e) {
-                Toast.makeText(getApplicationContext(), "Cari Option Aplikasi Lain", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Cari Aplikasi Lain", Toast.LENGTH_SHORT).show();
             }
         }
     }

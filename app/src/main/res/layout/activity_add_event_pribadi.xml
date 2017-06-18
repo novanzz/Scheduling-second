@@ -4,7 +4,7 @@
     android:id="@+id/activity_add_event"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.asus.scheduling.activity.AddEvent">
+    tools:context="com.example.asus.scheduling.activity.AddEventPribadi">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -88,7 +88,7 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:layout_marginTop="24dp"
-            android:id="@+id/txtEmailSign"/>
+            android:id="@+id/note"/>
     </android.support.design.widget.TextInputLayout>
 
     </RelativeLayout>

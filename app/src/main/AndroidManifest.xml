@@ -11,8 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".MainActivityAbout"
-            android:theme="@style/TidakAdaBar"/>
+        <activity
+            android:name=".MainActivityAbout"
+            android:theme="@style/TidakAdaBar" />
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/TidakAdaBar" />
@@ -35,7 +36,8 @@
                 android:value=".activity.SgnNotRegst" />
         </activity>
         <activity android:name=".activity.JoinGrupActivity" />
-        <activity android:name=".activity.AddEvent"></activity>
+        <activity android:name=".activity.AddEventPribadi" />
+        <activity android:name=".activity.AddEventGrup"></activity>
     </application>
 
 </manifest>
