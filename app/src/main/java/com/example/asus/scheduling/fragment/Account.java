@@ -95,7 +95,7 @@ public class Account extends Fragment implements View.OnClickListener {
          @Override
          public void onDataChange(DataSnapshot dataSnapshot) {
              for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                 String postkey = postSnapshot.getKey();
+                 final String postkey = postSnapshot.getKey();
                  //hapus user pada groupuser
                  FirebaseUser userGroup = FirebaseAuth.getInstance().getCurrentUser();
                  DatabaseReference refrensi = FirebaseDatabase.getInstance().getReference();
@@ -105,25 +105,24 @@ public class Account extends Fragment implements View.OnClickListener {
                      public void onDataChange(DataSnapshot dataSnapshot) {
                          for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                              appleSnapshot.getRef().removeValue();
-                             // hapus user pada node user
+                             // hapus tanggal pada node tanggalpribadi
                              FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                              DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                             Query queryUser = ref.child("User").orderByKey().equalTo(user.getUid());
+                             Query queryUser = ref.child("TanggalPribadi").child(postkey).orderByChild("userId").equalTo(user.getUid());
                              queryUser.addListenerForSingleValueEvent(new ValueEventListener() {
                                  @Override
                                  public void onDataChange(DataSnapshot dataSnapshot) {
                                      for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                          appleSnapshot.getRef().removeValue();
-                                         // hapus tanggal pada node tanggalpribadi
+                                         // hapus user pada node user
                                          FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                          DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                                         Query queryUser = ref.child("TanggalPribadi").orderByChild("").equalTo(user.getUid());
+                                         Query queryUser = ref.child("User").orderByKey().equalTo(user.getUid());
                                          queryUser.addListenerForSingleValueEvent(new ValueEventListener() {
                                              @Override
                                              public void onDataChange(DataSnapshot dataSnapshot) {
                                                  for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                                      appleSnapshot.getRef().removeValue();
-
                                                  }
                                                  Auth.GoogleSignInApi.signOut(mGoogleApiClient);
                                                  FirebaseAuth.getInstance().signOut();

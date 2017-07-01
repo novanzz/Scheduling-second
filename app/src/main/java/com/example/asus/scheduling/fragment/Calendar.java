@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.asus.scheduling.Model.Tanggal;
@@ -122,7 +121,7 @@ public class Calendar extends Fragment {
                             setupAdapter();
                             JoinGroupRecyclerview.setAdapter(adapter);
 
-                            Toast.makeText(getContext(),date,Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getContext(),date,Toast.LENGTH_SHORT).show();
                             //Toast.makeText(getContext(),tanggal,Toast.LENGTH_SHORT).show();
                             //Toast.makeText(getContext(),name,Toast.LENGTH_SHORT).show();
                            /* final FirebaseUser user = mAuth.getCurrentUser();
@@ -247,8 +246,9 @@ public class Calendar extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(tanggalViewHolder viewHolder, Tanggal model, int position) {
-                viewHolder.txtDate.setText(model.getDate());
+                viewHolder.txtDate.setText(model.getTime());
                 viewHolder.txtName.setText(model.getName());
+                viewHolder.note.setText(model.getNote());
                 Glide.with(getContext()).load(model.getPhotoUrl()).into(viewHolder.photoUrl);
             }
         };

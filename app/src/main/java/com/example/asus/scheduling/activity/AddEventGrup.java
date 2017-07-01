@@ -76,9 +76,12 @@ public class AddEventGrup extends AppCompatActivity {
                             uploadId = mDatabase.push().getKey();
                             Tanggal tglGrup = new Tanggal(tanggal,jam,note,PhotoUrl
                                     ,Name,uploadId,user.getUid());
+                            Tanggal tglUser = new Tanggal(tanggal,jam,note,PhotoUrl
+                                    ,Name,uploadId,user.getUid());
 
                             Map<String,Object> update = new HashMap<>();
                             update.put("/TanggalGroup/"+GroupId+"/"+uploadId,tglGrup);
+                            update.put("/TanggalPribadi/"+GroupId+"/"+uploadId,tglUser);
 
                             // update data yang ada bila telah selesai akan pindah act
                             mDatabase.updateChildren(update, new DatabaseReference.CompletionListener() {

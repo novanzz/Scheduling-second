@@ -61,7 +61,7 @@ public class AddEventPribadi extends AppCompatActivity {
 
                                        // event yang terjadi ketika di klik
                                        FirebaseUser user = mAuth.getCurrentUser();
-                                       mDatabaseRef.child("User").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        mDatabaseRef.child("User").child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                            @Override
                                            public void onDataChange(DataSnapshot dataSnapshot) {
                                                if (dataSnapshot.getValue() != null) {
@@ -75,7 +75,6 @@ public class AddEventPribadi extends AppCompatActivity {
                                                    uploadId = mDatabase.push().getKey();
                                                    Tanggal tglUser = new Tanggal(tanggal,jam,note,PhotoUrl
                                                            ,Name,uploadId,user.getUid());
-
                                                    Map<String,Object> update = new HashMap<>();
                                                    update.put("/TanggalPribadi/"+GroupId+"/"+uploadId,tglUser);
 

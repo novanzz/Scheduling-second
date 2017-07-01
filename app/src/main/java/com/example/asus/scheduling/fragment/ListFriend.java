@@ -1,10 +1,14 @@
 package com.example.asus.scheduling.fragment;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.asus.scheduling.Model.Group;
 import com.example.asus.scheduling.Model.User;
 import com.example.asus.scheduling.R;
+import com.example.asus.scheduling.activity.AccountAct;
 import com.example.asus.scheduling.friendViewHolder;
 import com.firebase.ui.database.FirebaseIndexRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,10 +36,9 @@ public class ListFriend extends Fragment {
     private RecyclerView JoinGroupRecyclerview;
     private DatabaseReference mDatabaseRef,keyRef,dataRef;
     private FirebaseAuth mAuth;
+    private FloatingActionButton fab;
     private FirebaseIndexRecyclerAdapter<User,friendViewHolder> adapter;
     String postKey;
-    private FloatingActionButton fab;
-
 
 
 
@@ -51,7 +55,7 @@ public class ListFriend extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_list_friend, container, false);
 
-
+        fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
         JoinGroupRecyclerview = (RecyclerView) rootView.findViewById(R.id.user_list);
             JoinGroupRecyclerview.setHasFixedSize(true);
             LinearLayoutManager lin = new LinearLayoutManager(getContext());
@@ -62,8 +66,44 @@ public class ListFriend extends Fragment {
         final TextView mTxtNamaGrup = (TextView) rootView.findViewById(R.id.txtNamaGrup);
         final ImageView mPhotoGrup = (CircleImageView) rootView.findViewById(R.id.fotogroup);
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Apakah anda ingin melihat jadwal pribadi anda")
+                        .setCancelable(false).setPositiveButton("Ya",new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog,int id)
+                    {
+                        Intent a = new Intent(getContext(), AccountAct  .class);
+                        a.addCategory(Intent.CATEGORY_HOME);
+                        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(a);
+                    }
+                })
+                        .setNegativeButton("Tidak",new DialogInterface.OnClickListener()
+                        {
+                            public void onClick(DialogInterface dialog,int id)
+                            {
 
+                                dialog.dismiss();
+
+                            }
+                        })
+                        // Pencet Back dan message hancur
+                        .setOnKeyListener(new DialogInterface.OnKeyListener() {
+                            @Override
+                            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                                if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP){
+                                    dialog.dismiss();
+                                }
+                                return false;
+                            }
+                        }).show();
+
+            }
+        });
 
 
         mAuth = FirebaseAuth.getInstance();

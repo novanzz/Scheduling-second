@@ -1,7 +1,9 @@
 package com.example.asus.scheduling;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,13 +19,18 @@ public class tanggalViewHolder extends RecyclerView.ViewHolder{
     public TextView txtDate;
     public TextView txtName;
     public ImageView photoUrl;
+    public CardView cardView;
+    public Button btnJoin;
+    public TextView note;
 
     public tanggalViewHolder(View itemView) {
         super(itemView);
         txtDate = (TextView)itemView.findViewById(R.id.date);
         txtName = (TextView)itemView.findViewById(R.id.txtNama);
         photoUrl = (CircleImageView)itemView.findViewById(R.id.fotouser);
-
+        cardView = (CardView) itemView.findViewById(R.id.cardView);
+        btnJoin = (Button)itemView.findViewById(R.id.Join);
+        note = (TextView) itemView.findViewById(R.id.note);
     }
 
 }

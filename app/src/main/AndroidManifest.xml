@@ -38,6 +38,9 @@
         <activity android:name=".activity.JoinGrupActivity" />
         <activity android:name=".activity.AddEventPribadi" />
         <activity android:name=".activity.AddEventGrup" />
+        <activity android:name=".activity.ActivityUser" />
+        <activity android:name=".activity.JoinEvent" />
+        <activity android:name=".activity.AccountAct"></activity>
     </application>
 
 </manifest>
