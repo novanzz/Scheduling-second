@@ -4,25 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragmentFriend"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="58dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="16dp"
     tools:context="com.example.asus.scheduling.activity.JoinGrupActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotouser"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        app:civ_border_width="2dp"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        app:civ_border_width="1dp"
         app:civ_border_color="#FF000000"/>
 
     <LinearLayout
         android:id="@+id/text_container"
         android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="78dp"
         android:layout_toRightOf="@id/fotouser"
         android:orientation="vertical"
         android:paddingLeft="16dp">

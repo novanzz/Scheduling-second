@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.asus.scheduling.Model.Tanggal;
@@ -42,8 +43,8 @@ public class Daily extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseRecyclerAdapter<Tanggal, tanggalViewHolder> adapter;
     public String  GrpId;
-
     public String date, grpKey;
+    private TextView note;
     View rootView;
 
 
@@ -52,6 +53,7 @@ public class Daily extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_list_daily, container, false);
+
 
         fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
 
@@ -231,8 +233,10 @@ public class Daily extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(tanggalViewHolder viewHolder, Tanggal model, int position) {
-                viewHolder.txtDate.setText(model.getDate());
+                viewHolder.txtTime.setText(model.getTime());
                 viewHolder.txtName.setText(model.getName());
+                viewHolder.txtDate.setText(model.getDate());
+                viewHolder.note.setText(model.getNote());
                 Glide.with(getContext()).load(model.getPhotoUrl()).into(viewHolder.photoUrl);
 
                 //mendapatkan key pada posisi sekarang

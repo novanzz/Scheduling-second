@@ -1,9 +1,13 @@
 package com.example.asus.scheduling.activity;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -26,6 +30,11 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
     private FirebaseDatabase mFirebaseInstance;
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
+    //Act ini akan ancur bila terpicu dari JoinGrup act
+    public static Activity fa;
+    {
+        fa = this;
+    }
 
 
     @Override
@@ -74,6 +83,46 @@ public class SgnNotRegst extends AppCompatActivity implements View.OnClickListen
 
                 startActivity(new Intent(SgnNotRegst.this,JoinGrupActivity.class));
     }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByBackKey();
+
+            //moveTaskToBack(false);
+
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    protected void exitByBackKey() {
+
+        AlertDialog alertbox = new AlertDialog.Builder(this)
+                .setMessage("Apakah anda ingin keluar aplikasi?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                        FirebaseAuth.getInstance().signOut();
+                        Intent a = new Intent(SgnNotRegst.this, LoginActivity.class);
+                        startActivity(a);
+                        finish();
+                        //close();
+
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                })
+                .show();
+
+    }
+
 
 
     @Override

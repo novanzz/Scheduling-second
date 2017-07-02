@@ -246,8 +246,9 @@ public class Calendar extends Fragment {
         ) {
             @Override
             protected void populateViewHolder(tanggalViewHolder viewHolder, Tanggal model, int position) {
-                viewHolder.txtDate.setText(model.getTime());
+                viewHolder.txtTime.setText(model.getTime());
                 viewHolder.txtName.setText(model.getName());
+                viewHolder.txtDate.setText(model.getDate());
                 viewHolder.note.setText(model.getNote());
                 Glide.with(getContext()).load(model.getPhotoUrl()).into(viewHolder.photoUrl);
             }

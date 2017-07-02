@@ -124,7 +124,7 @@ public class JoinEvent extends AppCompatActivity {
     private void setupAdapter(DatabaseReference key, DatabaseReference data) {
         adapter = new FirebaseIndexRecyclerAdapter<User, friendViewHolder>(
                 User.class,
-                R.layout.fragment_joint_event,
+                R.layout.fragment_friend,
                 friendViewHolder.class,
                 key,data
         ) {

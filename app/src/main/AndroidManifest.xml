@@ -29,18 +29,25 @@
         <activity android:name=".activity.SgnNotRegst" />
         <activity
             android:name=".activity.MakeGroup"
-            android:label="Make Group"
+            android:label="Membuat Grup"
             android:parentActivityName=".activity.SgnNotRegst">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.SgnNotRegst" />
         </activity>
-        <activity android:name=".activity.JoinGrupActivity" />
-        <activity android:name=".activity.AddEventPribadi" />
-        <activity android:name=".activity.AddEventGrup" />
-        <activity android:name=".activity.ActivityUser" />
-        <activity android:name=".activity.JoinEvent" />
-        <activity android:name=".activity.AccountAct"></activity>
+        <activity android:name=".activity.JoinGrupActivity"
+            android:label="Join Grup"/>
+        <activity android:name=".activity.AddEventPribadi"
+            android:label="Event Pribadi"/>
+        <activity android:name=".activity.AddEventGrup"
+            android:label="Event Grup"/>
+        <activity android:name=".activity.ActivityUser"
+            android:icon="@drawable/ic_cal"
+            android:label="Aktivitas User"/>
+        <activity android:name=".activity.JoinEvent"
+            android:label="Join Event"/>
+        <activity android:name=".activity.AccountAct"
+            android:label="Profile"></activity>
     </application>
 
 </manifest>

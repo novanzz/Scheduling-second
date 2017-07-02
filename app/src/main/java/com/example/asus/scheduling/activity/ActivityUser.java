@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.asus.scheduling.Model.Tanggal;
@@ -174,7 +173,7 @@ public class ActivityUser extends AppCompatActivity {
 
         adapter = new FirebaseRecyclerAdapter<Tanggal, tanggalViewHolder>(
                 Tanggal.class,
-                R.layout.fragment_daily,
+                R.layout.act_user,
                 tanggalViewHolder.class,
                 mDatabaseRef.child("TanggalPribadi").child(GrpId).orderByChild("userId").equalTo(userId)
                 //mDatabaseRef.child("TanggalPribadi").orderByChild("date").equalTo(date)
@@ -183,7 +182,10 @@ public class ActivityUser extends AppCompatActivity {
             protected void populateViewHolder(tanggalViewHolder viewHolder, Tanggal model, int position) {
                 viewHolder.txtDate.setText(model.getDate());
                 viewHolder.txtName.setText(model.getName());
+                viewHolder.txtTime.setText(model.getTime());
+                viewHolder.note.setText(model.getNote());
                 Glide.with(ActivityUser.this).load(model.getPhotoUrl()).into(viewHolder.photoUrl);
+
                 final DatabaseReference postRef = getRef(position);
                 viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -204,7 +206,7 @@ public class ActivityUser extends AppCompatActivity {
 
                                             // Set click listener for the whole post view
                                             final String key = postRef.getKey();
-                                            // hapus tanggal pada node tanggalpribadi masih belum bisa
+
                                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                             DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                                             Query queryUser = ref.child("TanggalPribadi").child(postkey).child(key);
@@ -213,8 +215,49 @@ public class ActivityUser extends AppCompatActivity {
                                                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                                                     for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
-                                                        Toast.makeText(ActivityUser.this,"masuk",Toast.LENGTH_SHORT).show();
                                                         appleSnapshot.getRef().removeValue();
+                                                        //    hapus node join event
+                                                        //    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                                                        Query queryUser = ref.child("JoinEvent").child(postkey).child(key);
+                                                        queryUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                                                for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
+                                                                    appleSnapshot.getRef().removeValue();
+                                                                    //     Hapus Node tanggal pribadi
+                                                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                                                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                                                                    Query queryUser = ref.child("TanggalGroup").child(postkey).child(key);
+                                                                    queryUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                                        @Override
+                                                                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                                                            for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
+                                                                                appleSnapshot.getRef().removeValue();
+
+                                                                            }
+
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onCancelled(DatabaseError databaseError) {
+
+                                                                        }
+
+                                                                    });
+
+                                                                }
+
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(DatabaseError databaseError) {
+
+                                                            }
+
+                                                        });
 
                                                     }
 

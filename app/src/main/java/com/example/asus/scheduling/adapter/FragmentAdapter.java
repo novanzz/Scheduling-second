@@ -46,12 +46,12 @@ public class FragmentAdapter extends FragmentPagerAdapter {
             return "Calendar";
         }
         if (position == 1) {
-            return "Daily";
+            return "Daily Group";
         }
         if(position ==2) {
             return "Friend";
         }else {
-            return "Daily";
+            return "Daily Group";
         }
 
     }

@@ -1,14 +1,12 @@
 package com.example.asus.scheduling.fragment;
 
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +40,8 @@ public class ListFriend extends Fragment {
 
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,41 +69,11 @@ public class ListFriend extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setMessage("Apakah anda ingin melihat jadwal pribadi anda")
-                        .setCancelable(false).setPositiveButton("Ya",new DialogInterface.OnClickListener()
-                {
-                    public void onClick(DialogInterface dialog,int id)
-                    {
                         Intent a = new Intent(getContext(), AccountAct  .class);
-                        a.addCategory(Intent.CATEGORY_HOME);
-                        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(a);
                     }
-                })
-                        .setNegativeButton("Tidak",new DialogInterface.OnClickListener()
-                        {
-                            public void onClick(DialogInterface dialog,int id)
-                            {
+                });
 
-                                dialog.dismiss();
-
-                            }
-                        })
-                        // Pencet Back dan message hancur
-                        .setOnKeyListener(new DialogInterface.OnKeyListener() {
-                            @Override
-                            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-                                if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP){
-                                    dialog.dismiss();
-                                }
-                                return false;
-                            }
-                        }).show();
-
-            }
-        });
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -151,6 +121,8 @@ public class ListFriend extends Fragment {
         return rootView;
         }
 
+
+
     private void setupAdapter(DatabaseReference key, DatabaseReference data) {
             adapter = new FirebaseIndexRecyclerAdapter<User, friendViewHolder>(
                     User.class,
@@ -167,6 +139,7 @@ public class ListFriend extends Fragment {
             };
 
     }
+
 
 }
 

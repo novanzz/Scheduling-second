@@ -2,9 +2,7 @@ package com.example.asus.scheduling.Model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
-/**
- * Created by ASUS on 6/16/2017.
- */
+
 @IgnoreExtraProperties
 public class Tanggal{
 

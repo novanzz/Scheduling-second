@@ -57,6 +57,9 @@ public class JoinGrupActivity extends AppCompatActivity {
 
 
     }
+    public void onCreate() {
+        SgnNotRegst.fa.finish();
+    }
 
     private void setupAdapter() {
         //adapter untuk menampilkan data yang berada di child group
@@ -95,6 +98,7 @@ public class JoinGrupActivity extends AppCompatActivity {
                                 Intent i = new Intent(JoinGrupActivity.this, MainActivity.class);
                                 startActivity(i);
                                 finish();
+                                onCreate();
                             }
                         });
                     }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.asus.scheduling.MainActivity;
 import com.example.asus.scheduling.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,6 +32,7 @@ public class AccountAct extends AppCompatActivity implements View.OnClickListene
     private Button mBtnLogout,mbtnOutGroup;
     private GoogleApiClient mGoogleApiClient;
     private ImageView mFotoUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,28 +114,7 @@ public class AccountAct extends AppCompatActivity implements View.OnClickListene
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
                                             appleSnapshot.getRef().removeValue();
-                                            // hapus user pada node user
-                                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                            DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                                            Query queryUser = ref.child("User").orderByKey().equalTo(user.getUid());
-                                            queryUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
-                                                        appleSnapshot.getRef().removeValue();
-                                                    }
-                                                    Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-                                                    FirebaseAuth.getInstance().signOut();
-                                                    Intent b = new Intent(AccountAct.this, LoginActivity.class);
-                                                    startActivity(b);
-                                                    finish();
-                                                }
 
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                }
-                                            });
 
                                         }
 
@@ -160,6 +141,10 @@ public class AccountAct extends AppCompatActivity implements View.OnClickListene
             }
         });
     }
+    //buat ancurin semua fragment yang ada di adapter
+    public void onCreate() {
+        MainActivity.fa.finish();
+    }
 
 
     @Override
@@ -171,9 +156,35 @@ public class AccountAct extends AppCompatActivity implements View.OnClickListene
                 Intent a = new Intent(AccountAct.this, LoginActivity.class);
                 startActivity(a);
                 finish();
+                onCreate();
                 break;
             case R.id.btnOutGroup:
                 keluarGroup();
+                // hapus user pada node user
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                Query queryUser = ref.child("User").orderByKey().equalTo(user.getUid());
+                queryUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                            appleSnapshot.getRef().removeValue();
+                            Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                            FirebaseAuth.getInstance().signOut();
+                            Intent b = new Intent(AccountAct.this, LoginActivity.class);
+                            startActivity(b);
+                            finish();
+                            onCreate();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
 
                 break;
         }
