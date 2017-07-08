@@ -4,11 +4,12 @@
     android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.asus.scheduling.activity.SplashActivity">
+    tools:context="com.example.asus.scheduling.activity.SplashActivity"
+    android:background="@color/colorSplash">
     <ImageView
-    android:src="@drawable/splash"
+    android:src="@drawable/splashscreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scaleType="fitXY"/>
+    />
 
 </RelativeLayout>

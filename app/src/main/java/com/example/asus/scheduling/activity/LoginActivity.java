@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         btnAbout = (Button) findViewById(R.id.About);
         btnAbout.setOnClickListener(myhandler1);
 
+
         //inisialisasi mendapatkan auth dari firebase
         mAuth = FirebaseAuth.getInstance();
         //dia nerima klo sign in/out, klo misal sign in dia lari ke login act

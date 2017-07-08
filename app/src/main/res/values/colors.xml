@@ -5,4 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">#f0f0f0</color>
     <color name="colorBackgroundGrup">#808080</color>
+    <color name="colorSplash">#90d1d6</color>
+    <color name="colorOrange">#ffa500</color>
+
+
 </resources>
+

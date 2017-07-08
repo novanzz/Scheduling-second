@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragmentFriend"
     android:layout_width="match_parent"
-    android:layout_height="58dp"
+    android:layout_height="68dp"
     android:paddingLeft="10dp"
     android:paddingTop="16dp"
     tools:context="com.example.asus.scheduling.activity.JoinGrupActivity">
@@ -38,7 +38,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginBottom="5dp"
             android:gravity="top" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+
+            android:id="@+id/garis"
+            android:background="@android:color/darker_gray"/>
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -16,7 +16,7 @@
             android:theme="@style/TidakAdaBar" />
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/TidakAdaBar" />
+            android:label="@string/app_name"/>
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/TidakAdaBar">
@@ -36,18 +36,18 @@
                 android:value=".activity.SgnNotRegst" />
         </activity>
         <activity android:name=".activity.JoinGrupActivity"
-            android:label="Join Grup"/>
+            android:label="Bergabung Grup"/>
         <activity android:name=".activity.AddEventPribadi"
-            android:label="Event Pribadi"/>
+            android:label="Jadwal Pribadi"/>
         <activity android:name=".activity.AddEventGrup"
-            android:label="Event Grup"/>
+            android:label="Jadwal Grup"/>
         <activity android:name=".activity.ActivityUser"
             android:icon="@drawable/ic_cal"
-            android:label="Aktivitas User"/>
+            android:label="Kegiatan Anda"/>
         <activity android:name=".activity.JoinEvent"
-            android:label="Join Event"/>
+            android:label="Mengikuti"/>
         <activity android:name=".activity.AccountAct"
-            android:label="Profile"></activity>
+            android:label="Akun"></activity>
     </application>
 
 </manifest>

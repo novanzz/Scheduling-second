@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Select Image"
+            android:text="Pilih Gambar"
             android:id="@+id/selectimage"/>
 
         <android.support.design.widget.TextInputLayout
@@ -52,7 +52,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Make Group"
+                android:text="Buat Grup"
                 android:layout_gravity="right"
                 android:layout_marginTop="70dp"
                 android:id="@+id/uploadImg"/>

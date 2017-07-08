@@ -26,6 +26,14 @@
         android:onClick="Join"
         android:id="@+id/button2"
         android:src="@drawable/ic_group_add_black_24dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_below="@+id/text_container"
+        android:id="@+id/garis2"
+        android:background="@android:color/darker_gray"
+        android:layout_toRightOf="@+id/fotogroup"/>
+
 
     <LinearLayout
         android:id="@+id/text_container"
@@ -43,6 +51,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center" />
+
+
 
     </LinearLayout>
 

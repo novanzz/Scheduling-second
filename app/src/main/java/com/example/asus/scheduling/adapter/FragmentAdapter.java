@@ -43,13 +43,13 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         if (position == 0) {
-            return "Calendar";
+            return "Kalendar";
         }
         if (position == 1) {
-            return "Daily Group";
+            return "Timeline";
         }
         if(position ==2) {
-            return "Friend";
+            return "Teman";
         }else {
             return "Daily Group";
         }

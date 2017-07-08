@@ -17,11 +17,12 @@
         android:paddingRight="@dimen/activity_horizontal_margin">
 
         <Button
-            android:text="Make a Group"
+            android:text="Membuat Grup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:id="@+id/mkGroup" />
+            android:id="@+id/mkGroup"
+            android:background="@color/colorSplash"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,8 +45,8 @@
                 android:layout_height="wrap_content"
                 android:text="Atau"
                 android:fontFamily="sans-serif-condensed"
-                android:textSize="18sp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:textSize="15sp"
+                android:textColor="@color/cardview_dark_background"/>
 
             <View
                 android:layout_width="0dp"
@@ -57,11 +58,12 @@
         </LinearLayout>
 
         <Button
-            android:text="Join Grup"
+            android:text="Bergabung Grup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:id="@+id/jnGroup" />
+            android:id="@+id/jnGroup"
+            android:background="@color/colorSplash"/>
     </LinearLayout>
 
     <LinearLayout
@@ -70,10 +72,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
         <Button
-            android:text="Out"
+            android:text="Keluar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:background="@color/colorOrange"
             android:id="@+id/Out" />
 
     </LinearLayout>
